@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="box-container">
+    <header>
+        <div class="divider-container">
+            <div class="line"></div>
+            <h1 class="title2">Blogs</h1>
+            <div class="line"></div>
+        </div>
+    </header>
+
+    <main>
+
+        <article class="card">
+            <h1 class="info">Session Storage vs. Local Storage: What Are the Differences?</h1>
+            <small>Session and local storage are both easy-to-use client-side data stores you can access using
+                JavaScript. So how do they differ?</small>
+            <div>
+                <p><strong>Session storage</strong> is unique to each browser tab. If you open a new tab and navigate to
+                    the
+                    same site, you'll start a new session with its own storage. However, if you use a "duplicate tab"
+                    feature in your browser, that may reuse the same session. You can't rely too much on the specific
+                    details of a "session". Instead, focus on the core concept: session storage is temporary.
+                    <br><br>
+                    <i>Session storage has built-in API methods to work with key/value pair data. You can store data
+                        from
+                        JavaScript like so:</i>
+                    <span class="green centerText">sessionStorage.setItem("key","value");</span>
+                    <br>
+                    <i>And to retrieve the stored value:</i>
+                    <span class="green centerText">sessionStorage.getItem("key");</span>
+                    <br>
+                </p>
+                <br>
+                <p>
+                    <strong>Local storage</strong> maintains data across all instances of a site, whether they're in
+                    different tabs or windows. It is
+                    also permanent, so the data won't disappear when you close your browser. When you open a website
+                    that
+                    previously used local storage, it will always have access to that stored data.As a web developer,
+                    you
+                    can use this mechanism to retain data about a user. Some websites might use this to keep you logged
+                    in
+                    or provide a more personalized experience.
+                    <br><br>
+                    <i>Like session storage, you can set a local storage object with one line of JavaScript code:</i>
+                    <span class="green centerText">localStorage.setItem("key", "value");</span>
+                    <br>
+                    <i>To access the value of the key:</i>
+                    <span class="green centerText">localStorage.getItem("key");</span>
+                    <br>
+                    <i>While session storage clears data as soon as the session ends, the only way to clear local
+                        storage is to explicitly delete it. Both storage types offer two methods to clear data. The
+                        first removes a specific item of data based on its key:</i>
+                    <span class="green centerText">localStorage.removeItem("key");</span>
+                    <i>You can also remove all data stored by your site, regardless of its key:</i>
+                    <span class="green centerText">localStorage.clear();</span>
+                </p>
+                <br>
+                <div>
+                    <p><b>To Summerize:</b></p>
+                    <u>Local Storage</u>
+                    <ul style="padding-left: 50px ;">
+                        <li>Has no expiration date</li>
+                        <li>Client only</li>
+                        <li>Has no SSL support</li>
+                        <li>Data are not transferred on each HTTP request</li>
+                        <li>5 mb limit (check with the browser)</li>
+                    </ul>
+                    <br>
+                    <u>Session Storage</u>
+                    <ul style="padding-left: 50px ;">
+                        <li>Data is gone when you close the browser tab</li>
+                        <li>Client only</li>
+                        <li>Has no SSL support</li>
+                        <li>Data are not transferred on each HTTP request</li>
+                        <li>5-10 mb limit (check with the browser)</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+
+        <article class="card">
+            <h1 class="info">Differences Between Local Scope and Global Scope Variable In JavaScript</h1>
+            <small>The scope of a variable defines where it’s accessible in a program based off of where it was
+                created</small>
+            <div>
+                <strong>Global scope</strong> — Global scope contains all of the things defined outside of all code
+                blocks. A code block
+                simply consists of grouped statements inside curly braces ({ }). if statement, loops, function are
+                examples of structure that create a code block. A global variable has global scope. A global variable is
+                accessible from anywhere in the code.
+                <br>
+                <br>
+                <div style="display: flex; justify-content: center; text-align: center;">
+                    <img src="images/globalscope.png" alt="" style="width: 75%;">
+                </div>
+                <br>
+                <strong>Local Scope</strong> — Local scope contains things defined inside code blocks. A local variable
+                has local scope.A local variable is only accessible where it’s declared
+                <br>
+                <br>
+                <div style="display: flex; justify-content: center; text-align: center;">
+                    <img src="images/localscope.png" alt="" style="width: 75%;">
+                </div>
+                <p>
+                    Output: <br> helloWorld <br> Uncaught ReferenceError: b is not defined. <br><br>
+                    In the above program, variable a is a global variable and variable b is a local variable. The
+                    variable b can be accessed only inside the function greet. Hence, when we try to access variable b
+                    outside of the function, an error occurs.
+                </p>
+            </div>
+        </article>
+
+
+        <article class="card">
+            <h1 class="info">What is an event loop in JavaScript?</h1>
+            <div>
+                <p>The <strong>event loop</strong> is the secret behind JavaScript’s asynchronous programming. JS
+                    executes all operations on a single thread, but using a few smart data structures, it gives us the
+                    illusion of multi-threading. Let’s take a look at what happens on the back-end.</p><br>
+                <p>The <strong>call stack</strong> is responsible for keeping track of all the operations in line to be
+                    executed. Whenever a function is finished, it is popped from the stack.</p><br>
+                <p>The <strong>event queue</strong> is responsible for sending new functions to the stack for
+                    processing. It follows the queue data structure to maintain the correct sequence in which all
+                    operations should be sent for execution.</p><br>
+                <p>Whenever an async function is called, it is sent to a browser API. These are APIs built into the
+                    browser. Based on the command received from the call stack, the API starts its own single-threaded
+                    operation.</p><br>
+                <p>The event loop facilitates this process; it constantly checks whether or not the call stack is empty.
+                    If it is empty, new functions are added from the event queue. If it is not, then the current
+                    function call is processed.</p><br>
+                <div style="display: flex; justify-content: center; text-align: center;">
+                    <img src="images/eventloop.png" alt="" style="width: 75%;">
+                </div>
+            </div>
+        </article>
+
+
+        <article class="card">
+            <h1 class="info">What is an undefined in JavaScript?</h1>
+            <div>
+                <p><strong>Undefined</strong> is a property of the global object. That is, it is a variable in global
+                    scope. The initial value of undefined is the primitive value undefined.</p><br>
+                <p>In all non-legacy browsers, undefined is a non-configurable, non-writable property. (Even when this
+                    is not the case, avoid overriding it.)</p><br>
+                <p>A variable that has not been assigned a value is of type undefined. A method or statement also
+                    returns undefined if the variable that is being evaluated does not have an assigned value. A
+                    function returns undefined if a value was not returned.</p><br>
+
+                <p><b>Summary:</b></p>
+                <ul style="padding-left: 50px ;">
+                    <li>The <span class="red">undefined</span> is a primitive type that has a single value undefined
+                    </li>
+                    <li>Accessing an uninitialized variable returns <span class="red">undefined</span></li>
+                    <li>Accessing a non-existing property of an object returns <span class="red">undefined</span></li>
+                    <li>Accessing a out-of-bounds array element returns <span class="red">undefined</span></li>
+                    <li>A function without a <span class="red">return</span> statement or with a <span
+                            class="red">return</span> statement but without an expression
+                        returns <span class="red">undefined</span></li>
+                </ul>
+            </div>
+        </article>
+
+    </main>
+</body>
+
+</html>
